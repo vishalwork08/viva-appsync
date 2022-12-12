@@ -1,0 +1,52 @@
+query getSuperheroById {
+    getSuperheroById(heroId: "1") {
+      id
+    	name
+    	image {
+        url
+      }
+    	powerstats {
+        combat
+        durability
+        intelligence
+        power
+        speed
+        strength
+      }
+      # appearance
+      # biography
+    	connections {
+        relatives
+      }
+    	work {
+        base
+        occupation
+      }
+    }
+}
+
+query searchSuperheroByKeyword {
+    searchSuperheroByKeyword(keyword: "An") {
+      id
+      name
+    	image {
+        url
+      }
+    }
+}
+
+query listAllSuperheroes {
+  listAllSuperheroes{
+    id
+    name
+    image {
+        url
+      }
+  }
+}
+
+mutation updatePowerStatsById {
+  updatePowerStatsById(heroId: "31", powerstatName: "power", powerstatValue: 60) {
+    data
+  }
+}

@@ -1,0 +1,57 @@
+﻿schema {
+  query: Query
+  mutation: Mutation
+}
+
+type CUSTOM_SCHEMA_CONNECTIONS {
+  relatives: String!
+}
+
+type CUSTOM_SCHEMA_IMAGE {
+  url: String!
+}
+
+type CUSTOM_SCHEMA_POWERSTAT {
+  combat: Int!
+  durability: Int!
+  intelligence: Int!
+  power: Int!
+  speed: Int!
+  strength: Int!
+}
+
+type CUSTOM_SCHEMA_WORK {
+  base: String!
+  occupation: String!
+}
+
+type Mutation {
+  updatePowerStatsById(heroId: ID!, powerstatName: String!, powerstatValue: Int!): UpdatedPowerStats
+}
+
+type Query {
+  getSuperheroById(heroId: ID!): Superhero
+  listAllSuperheroes: [SuperHeroesForList]
+  searchSuperheroByKeyword(keyword: String!): [SuperHeroesForList]
+}
+
+type SuperHeroesForList {
+  id: ID!
+  image: CUSTOM_SCHEMA_IMAGE
+  name: String!
+}
+
+type Superhero {
+  #  appearance: [String!]
+  ## biography: [String!]
+  connections: CUSTOM_SCHEMA_CONNECTIONS
+  id: ID!
+  image: CUSTOM_SCHEMA_IMAGE
+  name: String!
+  powerstats: CUSTOM_SCHEMA_POWERSTAT
+  work: CUSTOM_SCHEMA_WORK
+}
+
+type UpdatedPowerStats {
+  data: String
+}
